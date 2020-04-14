@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const PORT = 3001;
 const bodyParser = require("body-parser");
+
+app.use(cors())
+cors({credentials: true, origin: true})
 
 const products = {
     name:'skates',
@@ -13,7 +17,7 @@ const products = {
 const stringProducts = JSON.stringify(products);
 
 
-app.get('/', (req, res) => {
+app.get('/',(req, res) => {
     res.json(products);
 })
 
